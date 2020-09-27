@@ -1,0 +1,63 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MyToken } from 'src/app/classes/models/my-token';
+import { AuthService } from 'src/app/services/auth.service';
+
+@Component({
+  selector: 'sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss']
+})
+export class SignInComponent implements OnInit {
+
+  utente: MyToken;
+  error = '';
+  isPresente: boolean;
+  
+  constructor(private router: Router, private service: AuthService) { }
+
+  ngOnInit() {
+    this.isPresente = true;
+  }
+
+  /**
+   * 
+   * @param loggami effettivo login
+   */
+  login(loggami) {
+
+    let usr = loggami.value;
+
+    this.service.login(usr.username, usr.password)
+      .subscribe({
+
+        next: (result: any) => {
+          this.utente = result;
+
+          if (this.utente) {
+            this.utente.scadenza = this.scadenza().toString();
+
+            this.service.setLogged(JSON.stringify(this.utente));
+            this.router.navigate(['home/dashboard']);
+          }
+          else {
+            this.isPresente = false;
+          }
+        },
+        error: (error: any) => {
+          // Stampa messaggio d'errore
+          this.error = error
+
+        }
+      })
+
+  }
+
+  scadenza() {
+    let primaDate = new Date();
+    primaDate.setHours(primaDate.getHours() + 2);
+
+    return primaDate;
+  }
+
+}
