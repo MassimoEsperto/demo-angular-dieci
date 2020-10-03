@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MyToken } from 'src/app/classes/models/my-token';
+import { Utils } from 'src/app/classes/utils/utils';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,13 +9,17 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements AfterViewInit {
+
+  ngAfterViewInit() {
+    Utils.backgroundBlue(this.elementRef)
+  }
 
   utente: MyToken;
   error = '';
   isPresente: boolean;
-  
-  constructor(private router: Router, private service: AuthService) { }
+
+  constructor(private elementRef: ElementRef, private router: Router, private service: AuthService) { }
 
   ngOnInit() {
     this.isPresente = true;
