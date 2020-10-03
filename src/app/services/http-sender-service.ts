@@ -49,7 +49,7 @@ export class HttpSenderService {
 
 
   handleError(error: HttpErrorResponse) {
-
+    console.log("error: ", error)
     // return an observable with a user friendly message
     return throwError('Error! something went wrong.');
   }
