@@ -5,6 +5,7 @@ import { AuthGuard } from 'src/app/classes/guard/auth-guard';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { DashboardComponent } from '../pages/home/dashboard/dashboard.component';
 import { DefaultPageComponent } from '../pages/home/default-page/default-page.component';
+import { InfoUtenteComponent } from '../pages/home/info-utente/info-utente.component';
 
 
 
@@ -21,8 +22,11 @@ const routes: Routes = [
             {
                 path: 'default-page',
                 component: DefaultPageComponent
+            },
+            {
+                path: 'info-utente',
+                component: InfoUtenteComponent
             }
-           
         ]
     }
 ];
