@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { Utils } from 'src/app/classes/utils/utils';
 
 @Component({
   selector: 'show-case',
   templateUrl: './show-case.component.html',
   styleUrls: ['./show-case.component.scss']
 })
-export class ShowCaseComponent implements OnInit {
+export class ShowCaseComponent  implements AfterViewInit {
+  constructor(private elementRef: ElementRef){
 
-  constructor() { }
-
-  ngOnInit(): void {
   }
-
+  ngAfterViewInit(){
+    Utils.backgroundBlue(this.elementRef)
+ }
 }
