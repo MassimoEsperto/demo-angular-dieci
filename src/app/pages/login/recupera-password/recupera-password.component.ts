@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { Utils } from 'src/app/classes/utils/utils';
 
 @Component({
   selector: 'recupera-password',
   templateUrl: './recupera-password.component.html',
   styleUrls: ['./recupera-password.component.scss']
 })
-export class RecuperaPasswordComponent implements OnInit {
+export class RecuperaPasswordComponent implements AfterViewInit {
+  constructor(private elementRef: ElementRef){
 
-  constructor() { }
-
-  ngOnInit(): void {
   }
-
+  ngAfterViewInit(){
+    Utils.backgroundBlue(this.elementRef)
+ }
 }
