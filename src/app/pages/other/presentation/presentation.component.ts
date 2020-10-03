@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { Utils } from 'src/app/classes/utils/utils';
 
 
 @Component({
@@ -11,6 +12,6 @@ export class PresentationComponent implements AfterViewInit {
 
   }
   ngAfterViewInit(){
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'yellow';
+    Utils.backgroundBlue(this.elementRef)
  }
 }
