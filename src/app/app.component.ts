@@ -23,6 +23,7 @@ export class AppComponent implements AfterViewInit {
     }
 
     prepareRoute(outlet: RouterOutlet) {
+        console.log("outlet",outlet)
         return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
     }
 
