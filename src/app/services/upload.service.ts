@@ -10,7 +10,7 @@ import { HttpSenderService } from './http-sender-service';
 export class UploadService extends HttpSenderService {
 
   SERVER_URL: string = "http://fantashitcup.altervista.org/base/uploadFile.php";
-
+  
   constructor(private http: HttpClient) {
     super();
   }
